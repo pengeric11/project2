@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="img/icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.5/paper-full.js"></script>
+
+    <title>Fun with Photos</title>
+</head>
+<body>
+
+<div class="col s12 m8 l9" id="art">
+
+    <nav id="regular-nav" class="grey darken-4" role="navigation">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center"><span class="title"><h1>The Foto Tool</h1></span></a>
+        </div>
+    </nav>
+
+    <div role="main">
+
+        <div class="section" id="editor_section" tabindex="0">
+            <div class="col s12">
+                <ul class="tabs tabs-fixed-width">
+                    <li tabindex="0" class="tab col s3"><a class="active" href="#edit" id="tab1">Photo Editor</a></li>
+                    <li tabindex="0" class="tab col s3"><a class="" href="#dynamic_canvas_container_pixel" id="tab2">Photo Pixelator</a></li>
+                    <li  tabindex="0" class="tab col s3"><a href="#dynamic_canvas_container_color" id="tab3">Color Sampler</a></li>
+                </ul>
+            </div>
+
+            <div class="row">
+
+
+                <h2 class="header">Choose a tab above!</h2>
+
+                <div id="card_help_container">
+                    <p id="card_help">You can either choose to edit a photo, play around
+                    with photo pixelation, or look at colors of a photo.</p>
+                </div>
+
+                <div id="edit">
+                    <div class="row" id="canvas_container_row">
+                        <div class="col s12 m4 l3" id="canvas_container">
+
+                            <form action="#" id="edit_controls">
+
+                                <div id="photo_selector_container">
+
+                                        <div class="collapsible-header"><i class="material-icons"></i>
+                                            <select id="photo_selector">
+                                                <option value="" disabled selected>Choose a photo</option>
+                                                <option value="1">Ocean</option>
+                                                <option value="2">Boats</option>
+                                                <option value="3">Castle</option>
+                                                <option value="4">Flowers</option>
+                                                <option value="5">Food</option>
+                                            </select>
+                                            <label for="photo_selector">Choose a Photo to Edit</label>
+                                        </div>
+
+
+                                </div>
+
+
+
+                                <ul class="collapsible" data-collapsible="accordion">
+
+                                    <li>
+                                        <div class="collapsible-header"><i class="material-icons">brightness_6</i>Brightness</div>
+                                        <div class="collapsible-body">
+                                            <span class="range-field">
+                                                <label for="brightness">Brightness</label>
+                                                <input type="range" id="brightness" min="-75" max="75">
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Contrast</div>
+                                        <div class="collapsible-body">
+                                            <span class="range-field">
+                                                    <label for="contrast">Contrast</label>
+                                                    <input type="range" id="contrast" min="-75" max="75">
+                                            </span>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="collapsible-header"><i class="material-icons">brightness_1</i>Exposure</div>
+                                        <div class="collapsible-body">
+                                            <span class="range-field">
+                                                    <label for="exposure">Exposure</label>
+                                                    <input type="range" id="exposure" min="-75" max="75">
+                                            </span>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="collapsible-header"><i class="material-icons">color_lens</i>Hue</div>
+                                        <div class="collapsible-body">
+                                            <span class="range-field">
+                                                    <label for="hue">Hue</label>
+                                                    <input type="range" id="hue" min="0" max="100" value="0">
+                                            </span>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="collapsible-header"><i class="material-icons">center_focus_strong</i>Sepia</div>
+                                        <div class="collapsible-body">
+                                            <span class="range-field">
+                                                    <label for="sepia">Sepia</label>
+                                                    <input type="range" id="sepia" min="0" max="100" value="0">
+                                            </span>
+                                        </div>
+                                    </li>
+
+
+                                    <li>
+                                        <div class="collapsible-header"><i class="material-icons">colorize</i>Vibrance</div>
+                                        <div class="collapsible-body">
+                                            <span class="range-field">
+                                                    <label for="vibrance">Vibrance</label>
+                                                    <input type="range" id="vibrance" min="-75" max="75">
+                                            </span>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Colorize</div>
+                                        <div class="collapsible-body">
+                                             <p class="range-field">
+                                                 <label for="colorize">Colorize</label>
+                                                 <input type="range" id="colorize" min="0" max="100">
+                                            </p>
+
+                                            <p>
+                                                <input class="with-gap" name="group1" type="radio" id="none" checked/>
+                                                <label for="none">None</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="group1" type="radio" id="radio1" />
+                                                <label for="radio1">Red</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="group1" type="radio" id="radio2" />
+                                                <label for="radio2">Orange</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="group1" type="radio" id="radio3" />
+                                                <label for="radio3">Yellow</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="group1" type="radio" id="radio4"  />
+                                                <label for="radio4">Green</label>
+                                            </p>
+                                            <p>
+                                                <input class="with-gap" name="group1" type="radio" id="radio5"/>
+                                                <label for="radio5">Blue</label>
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </form>
+
+
+                        </div>
+
+
+                        <div class="col s12 m4 l3">
+                            <canvas id="canvas2">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+
+                    <div id="dynamic_canvas_container_pixel" class="row">
+                        <div>
+
+                        <ul id="pixel_collapsible" class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header active"><i class="material-icons"></i>
+                                    Controls
+                               </div>
+                                <div class="collapsible-body">
+                                <span>
+
+
+                                <label for="photo_selector_pixel">Photo Select</label>
+                                <select id="photo_selector_pixel">
+                                    <option disabled selected>Choose a photo</option>
+                                    <option value="1">Ocean</option>
+                                    <option value="2">Boats</option>
+                                    <option value="3">Castle</option>
+                                    <option value="4">Flowers</option>
+                                    <option value="5">Food</option>
+                                </select>
+
+
+                                    <button id="stop">Reset</button>
+                                </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header active"><i class="material-icons"></i>Help Section
+                                    </div>
+                                <div class="collapsible-body">
+                                    <p>
+                                        Please begin by choosing an image and then simply move your mouse around on the
+                                        image to change its pixelation. Click reset when you're done and choose another image
+                                        to try again!
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        </div>
+                    </div>
+
+
+                        <div id="dynamic_canvas_container_color">
+                            <div>
+                                <ul id="color_collapsible" class="collapsible" data-collapsible="accordion">
+                                    <li>
+                                        <div class="collapsible-header active"><i class="material-icons"></i>
+                                        Controls</div>
+                                        <div class="collapsible-body">
+
+
+                                    <label for="photo_selector_color">Photo Select</label>
+                                    <select id="photo_selector_color">
+                                        <option value="" disabled selected>Choose a photo</option>
+                                        <option value="1">Ocean</option>
+                                        <option value="2">Boats</option>
+                                        <option value="3">Castle</option>
+                                        <option value="4">Flowers</option>
+                                        <option value="5">Food</option>
+                                    </select>
+                                    <span class="range-field">
+                                            <label for="range">Brush Size</label>
+                                            <input type="range" id="range" min="30" max="500">
+                                    <button id="clear_color">Reset</button>
+
+                                    </span>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="collapsible-header active"><i class="material-icons"></i>
+                                            Help Section</div>
+                                        <div class="collapsible-body">
+                                            First choose an image to start. Nothing will be displayed but if you
+                                            move your mouse over the image area, it will sample colors on the image and you can
+                                            use the slider to change the brush size.
+                                        </div>
+
+                                    </li>
+                                </ul>
+
+                        </div>
+
+                        </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+    <div class="parallax-container" tabindex="0">
+
+        <ul id="footer_collapsible" class="collapsible popout" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header active"><i class="material-icons"></i></div>
+                <div class="collapsible-body">
+                    <h2>About</h2>
+                    <p>This site uses the Paper.js and CamanJS libraries to help with all of the
+                        image processing. More information can be found on their sites:
+                        <ul>
+                         <li><a href="http://paperjs.org/" target="_blank">Paper.js</a></li>
+                        <li><a href="http://camanjs.com/" target="_blank">CamanJS</a></li>
+                        </ul>
+                    </p>
+                </div>
+            </li>
+        </ul>
+
+                <div id="last_parallax" class="parallax">
+            <img alt="camera on a table" id="image2" src="img/footer_image.jpg"></div>
+        <div class="footer" role="contentinfo">
+            &copy; 2018 Eric Peng
+        </div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
